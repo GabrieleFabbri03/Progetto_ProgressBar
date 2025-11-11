@@ -5,6 +5,7 @@ set(CMAKE_CXX_STANDARD 20)
 
 find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
-add_executable(Progetto_ProgressBar main.cpp)
+add_executable(Progetto_ProgressBar main.cpp
+        Observer.h)
 
 target_link_libraries(Progetto_ProgressBar sfml-graphics sfml-window sfml-system)
