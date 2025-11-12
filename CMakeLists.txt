@@ -7,6 +7,7 @@ find_package(SFML 2.5 COMPONENTS graphics window system REQUIRED)
 
 add_executable(Progetto_ProgressBar main.cpp
         Observer.h
-        Observable.h)
+        Observable.h
+        ProgressBar.h)
 
 target_link_libraries(Progetto_ProgressBar sfml-graphics sfml-window sfml-system)

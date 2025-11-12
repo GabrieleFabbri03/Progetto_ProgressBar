@@ -4,7 +4,7 @@
 #include <vector>
 #include "Observer.h"
 
-//classe che sara' osservata dagli observer e quindi dalla progress bar
+//classe che sara' osservata dagli observer e quindi dalla classe FileLoader (da implementare)
 
 class Observable {
 private:
