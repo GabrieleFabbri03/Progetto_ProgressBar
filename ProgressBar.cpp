@@ -1,7 +1,7 @@
 #include "ProgressBar.h"
 
 ProgressBar::ProgressBar(float width, sf::Color bgColor, sf::Color fgColor)
-    : width(width), dimension(0.0f) {
+    : width(width), value(0.0f) {
 
     //parte dietro barra con dimensione max fissata a width
     background.setSize(sf::Vector2f(width, 20.0f)); //metodi della lib sfml
@@ -15,4 +15,18 @@ ProgressBar::ProgressBar(float width, sf::Color bgColor, sf::Color fgColor)
 void ProgressBar::setPosition(float x, float y) {
     background.setPosition(x, y);
     foreground.setPosition(x, y);
+}
+//metodo che mi serve al riempiemento della barra
+void ProgressBar::updateProgress(float progress) {
+    value = progress;
+    float filledWidth = width * (value / 100.0f);
+    foreground.setSize(sf::Vector2f(filledWidth, 20.0f));
+}
+float ProgressBar::getValue() const {
+    return value;
+}
+
+void ProgressBar::draw(sf::RenderTarget& target, sf::RenderStates states) const {
+    target.draw(background, states);
+    target.draw(foreground, states);
 }

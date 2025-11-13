@@ -9,9 +9,9 @@ private:
     sf::RectangleShape background;
     sf::RectangleShape foreground;
     float width;
-    float dimension;
+    float value;
 
-    void draw(sf::RenderTarget& target, sf::RenderStates states) const override {} //si trova nella classe protected sf::Drawable della SFML
+    void draw(sf::RenderTarget& target, sf::RenderStates states) const override; //si trova nella classe protected sf::Drawable della SFML
 public:
     ProgressBar(float width, sf::Color bgColor, sf::Color fgColor);
 
