@@ -9,6 +9,8 @@ add_executable(Progetto_ProgressBar main.cpp
         Observer.h
         Observable.h
         ProgressBar.h
-        ProgressBar.cpp)
+        ProgressBar.cpp
+        FileLoader.h
+)
 
 target_link_libraries(Progetto_ProgressBar sfml-graphics sfml-window sfml-system)
