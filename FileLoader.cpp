@@ -15,9 +15,11 @@ void FileLoader::load() {
     float totalTime = (fileSize /1024.0f) * msPerKB;               //calcolo tempo di caricamento proporzionale alla dimensione
 
     //simulazione caricamento
-    for (int i = 0; i <= 100; ++i){
-        std::this_thread::sleep_for (std::chrono::milliseconds (static_cast<int>(totalTime/100.0f)));
-        notifyObserver(static_cast<float>(i)); //notifico gli observer ma con conversione float siccome progress e' float
+    progress++;
+    if (progress > 100) {
+        progress = 100;
+        done = true;
     }
-    done = true;
+    notifyObserver(static_cast<float>(progress)); //aggiorno la barra di progresso
+    std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(totalTime / 100))); //simulo il tempo di caricamento
 }
