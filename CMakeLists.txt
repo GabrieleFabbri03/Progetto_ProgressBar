@@ -11,6 +11,7 @@ add_executable(Progetto_ProgressBar main.cpp
         ProgressBar.h
         ProgressBar.cpp
         FileLoader.h
+        FileLoader.cpp
 )
 
 target_link_libraries(Progetto_ProgressBar sfml-graphics sfml-window sfml-system)

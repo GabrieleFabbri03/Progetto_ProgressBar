@@ -1,12 +1,23 @@
 #include <SFML/Graphics.hpp>
 #include "ProgressBar.h"
+#include "FileLoader.h"
+#include <iostream>
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(400, 200), "Esempio Progress Bar");
+    sf::RenderWindow window(sf::VideoMode(600, 350), "Esempio Progress Bar");
     window.setFramerateLimit(60); //pr vedere piu' fluidamente la barra che carica
 
     ProgressBar progressBar(300.f, sf::Color::Black, sf::Color::Green);
     progressBar.setPosition(50.0f, 50.0f);
+
+    std::string pathInput;
+    std::cout<<"Inserire un percorso di un file da caricare: \n> ";
+    std::cin >> pathInput;
+
+    fs::path selectedFile (pathInput);
+
+    FileLoader fileLoader(selectedFile);
+
 
     //gestione chiusura window
     while (window.isOpen()) {
