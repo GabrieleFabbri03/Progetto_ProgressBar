@@ -10,16 +10,17 @@ void FileLoader::load() {
         std::cerr << "Errore: Percorso non valido!\n";
     }
     auto fileSize= fs::file_size(filePath);                //ottengo la dimensione del file in byte
+    size_t stepSize = fileSize / 100;
+    float stepMs = (fileSize / 1024)* 5 / 100;
 
-    float msPerKB = 50.0f;                                         //tempo per KB
-    float totalTime = (fileSize /1024.0f) * msPerKB;               //calcolo tempo di caricamento proporzionale alla dimensione
-
-    //simulazione caricamento
-    progress++;
-    if (progress > 100) {
-        progress = 100;
+    bytesLoaded += stepSize;
+    if (bytesLoaded >= fileSize) {
+        bytesLoaded = fileSize;
         done = true;
     }
-    notifyObserver(static_cast<float>(progress)); //aggiorno la barra di progresso
-    std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(totalTime / 100))); //simulo il tempo di caricamento
+    //simulazione caricamento
+    float progress = static_cast<float>(bytesLoaded/fileSize)* 100.0f;
+
+    notifyObserver(progress); //aggiorno la barra di progresso
+    std::this_thread::sleep_for(std::chrono::milliseconds(static_cast<int>(stepMs))); //simulo il tempo di caricamento
 }

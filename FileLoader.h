@@ -8,6 +8,7 @@ namespace fs = std::filesystem;
 class FileLoader : public Observable {
 private:
     int progress = 0;
+    float bytesLoaded = 0.0f;
     fs::path filePath;
     bool done = false;
 public:

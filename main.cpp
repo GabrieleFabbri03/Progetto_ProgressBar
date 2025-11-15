@@ -18,6 +18,7 @@ int main() {
     //Font titolo
     sf::Font font;
     font.loadFromFile("16020_FUTURAM.ttf");
+
     //titolo percorso file
     sf::Text title;
     title.setString("Caricamento file: " + selectedFile.filename().string());
@@ -26,6 +27,10 @@ int main() {
     title.setFillColor(sf::Color::Black);
     title.setPosition(150.0f, 100.0f);
 
+    //pecentuale
+    sf::Text percent("0%", font, 18);
+    percent.setPosition(290.0f, 125.0f);
+    percent.setFillColor(sf::Color::Black);
 
     ProgressBar progressBar(300.f, sf::Color::Black, sf::Color::Green);
     progressBar.setPosition(150.0f, 150.0f);
@@ -42,12 +47,19 @@ int main() {
         }
         loader.load(); //eseguo un piccolo step di caricamento
 
-         //aggiorno percentuale
+        int percentUpdate = static_cast<int>(progressBar.getValue());
+        percent.setString(std::to_string(percentUpdate) + "%");
+        //aggiorno percentuale
         window.clear(sf::Color::White);   //pulisce e colora lo sfondo della window
         window.draw(progressBar);
         window.draw(title);
+        window.draw(percent);
         window.display();//mostra quello che e' stato disegnato nella window
 
+        if (loader.isDone()) {
+            percent.setString("Caricamento compleato");
+            window.close();
+            return 0;
+        }
     }
-    return 0;
 }
