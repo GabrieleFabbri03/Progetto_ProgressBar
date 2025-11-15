@@ -6,7 +6,7 @@
 int main() {
     std::string pathInput;
     std::cout<<"Inserire un percorso di un file da caricare: \n> ";
-    std::cin >> pathInput;
+    std::getline(std::cin,pathInput);
 
     fs::path selectedFile (pathInput);
 
@@ -14,6 +14,18 @@ int main() {
 
     sf::RenderWindow window(sf::VideoMode(600, 350), "Esempio Progress Bar");
     window.setFramerateLimit(60); //pr vedere piu' fluidamente la barra che carica
+
+    //Font titolo
+    sf::Font font;
+    font.loadFromFile("16020_FUTURAM.ttf");
+    //titolo percorso file
+    sf::Text title;
+    title.setString("Caricamento file: " + selectedFile.filename().string());
+    title.setFont(font);
+    title.setCharacterSize(18);
+    title.setFillColor(sf::Color::Black);
+    title.setPosition(150.0f, 100.0f);
+
 
     ProgressBar progressBar(300.f, sf::Color::Black, sf::Color::Green);
     progressBar.setPosition(150.0f, 150.0f);
@@ -33,7 +45,9 @@ int main() {
          //aggiorno percentuale
         window.clear(sf::Color::White);   //pulisce e colora lo sfondo della window
         window.draw(progressBar);
-        window.display();                 //mostra quello che e' stato disegnato nella window
+        window.draw(title);
+        window.display();//mostra quello che e' stato disegnato nella window
+
     }
     return 0;
 }
