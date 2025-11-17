@@ -19,5 +19,9 @@ public:
     void updateProgress(float progress) override;
     float getValue() const;
 
+    //aggiunti metodi getter per gtest
+    sf::Vector2f getForegroundSize() const;
+    sf::Vector2f getBackgroundPosition() const;
+    sf::Vector2f getForegroundPosition() const;
 };
 #endif

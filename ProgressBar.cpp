@@ -30,3 +30,13 @@ void ProgressBar::draw(sf::RenderTarget& target, sf::RenderStates states) const 
     target.draw(background, states);
     target.draw(foreground, states);
 }
+//aggiunti getter per gtest
+sf::Vector2f ProgressBar::getForegroundSize() const {
+    return foreground.getSize();
+};
+sf::Vector2f ProgressBar::getForegroundPosition() const {
+    return foreground.getPosition();
+};
+sf::Vector2f ProgressBar::getBackgroundPosition() const {
+    return background.getPosition();
+};

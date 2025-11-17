@@ -26,6 +26,7 @@ add_executable(Tests
         ProgressBar.cpp
         FileLoader.h
         FileLoader.cpp
+        Test/mainTest.cpp
 )
 
 target_link_libraries(Progetto_ProgressBar sfml-graphics sfml-window sfml-system)
@@ -33,6 +34,9 @@ target_link_libraries(Tests
         GTest::GTest
         GTest::Main
         pthread
+        sfml-graphics
+        sfml-window
+        sfml-system
 )
 
 enable_testing()
