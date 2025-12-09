@@ -4,7 +4,7 @@
 #include <vector>
 #include "Observer.h"
 
-//classe che sara' osservata dagli observer e quindi dalla classe FileLoader (da implementare)
+//classe che sara' osservata dagli observer
 
 class Observable {
 private:

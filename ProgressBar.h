@@ -13,7 +13,7 @@ private:
 
     void draw(sf::RenderTarget& target, sf::RenderStates states) const override; //si trova nella classe protected sf::Drawable della SFML
 public:
-    ProgressBar(float width, sf::Color bgColor, sf::Color fgColor);
+    ProgressBar(float width, sf::Color bgColor, sf::Color fgColor);//non dichiaro value perch`e inizializzato a 0.0
 
     void setPosition(float x, float y);
     void updateProgress(float progress) override;

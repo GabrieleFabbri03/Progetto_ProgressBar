@@ -1,14 +1,14 @@
 #include "ProgressBar.h"
 
 ProgressBar::ProgressBar(float width, sf::Color bgColor, sf::Color fgColor)
-    : width(width), value(0.0f) {
-
+    : width(width), value(0.0) {
+    //inizializzo le due parti della barra
     //parte dietro barra con dimensione max fissata a width
-    background.setSize(sf::Vector2f(width, 20.0f)); //metodi della lib sfml
+    background.setSize(sf::Vector2f(width, 20.0)); //metodi della lib sfml
     background.setFillColor(bgColor);
 
     //parte frontale della barra inizializzata a 0
-    foreground.setSize(sf::Vector2f(0.0f, 20.0f));   //metodi della lib sfml
+    foreground.setSize(sf::Vector2f(0.0, 20.0));   //metodi della lib sfml
     foreground.setFillColor(fgColor);
 }
 //definizione dei metodi della classe ProgressBar.h
@@ -19,7 +19,7 @@ void ProgressBar::setPosition(float x, float y) {
 //metodo che mi serve al riempiemento della barra
 void ProgressBar::updateProgress(float progress) {
     value = progress;
-    float filledWidth = width * (value / 100.0f);
+    float filledWidth = width * (value / 100.0f); //calcolo la larghezza della parte riempita
     foreground.setSize(sf::Vector2f(filledWidth, 20.0f));
 }
 float ProgressBar::getValue() const {
