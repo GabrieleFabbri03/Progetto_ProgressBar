@@ -19,8 +19,8 @@ void ProgressBar::setPosition(float x, float y) {
 //metodo che mi serve al riempiemento della barra
 void ProgressBar::updateProgress(float progress) {
     value = progress;
-    float filledWidth = width * (value / 100.0f); //calcolo la larghezza della parte riempita
-    foreground.setSize(sf::Vector2f(filledWidth, 20.0f));
+    float filledWidth = width * (value / 100.0); //calcolo la larghezza della parte riempita
+    foreground.setSize(sf::Vector2f(filledWidth, 20.0));
 }
 float ProgressBar::getValue() const {
     return value;

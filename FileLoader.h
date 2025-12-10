@@ -12,7 +12,7 @@ private:
     fs::path filePath;
     bool done = false;
 public:
-    explicit FileLoader (const fs::path& path);
+    FileLoader (const fs::path& path);
 
     void load();
 
